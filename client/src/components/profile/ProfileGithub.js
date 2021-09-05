@@ -7,7 +7,7 @@ import { getGithubRepos } from '../../actions/profile';
 const ProfileGithub = ({ username, getGithubRepos, repos }) => {
   useEffect(() => {
     getGithubRepos(username);
-  }, [getGithubRepos]);
+  }, [getGithubRepos, username]);
 
   return (
     <div className='profile-github'>
@@ -23,6 +23,16 @@ const ProfileGithub = ({ username, getGithubRepos, repos }) => {
                   {repo.name}
                 </a>
               </h4>
+              <p>{repo.description}</p>
+            </div>
+            <div>
+              <ul>
+                <li className='badge badge-primary'>
+                  Stars: {repo.stagazers_count}
+                </li>
+                <li className='badge badge-dark'>Watchers: {repo.watchers_count}</li>
+                <li className='badge badge-light'>Forks: {repo.forks_count}</li>
+              </ul>
             </div>
           </div>
         ))
